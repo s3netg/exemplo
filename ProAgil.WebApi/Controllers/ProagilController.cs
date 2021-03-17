@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProAgil.WebApi.Data;
-using ProAgil.WebApi.Model;
+using ProAgil.Repository;
+
 
 namespace ProAgil.WebApi.Controllers
 {
@@ -37,7 +37,7 @@ namespace ProAgil.WebApi.Controllers
         public async Task<IActionResult> Getbyid([FromServices] DataContext context , int id){
             try
             {
-                var result = await context.Eventos.FirstOrDefaultAsync( x => x.EventoId == id);
+                var result = await context.Eventos.FirstOrDefaultAsync( x => x.Id == id);
                 return Ok(result);
             }
             catch (System.Exception)
